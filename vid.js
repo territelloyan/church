@@ -21,7 +21,7 @@ $(document).ready(function() {
     var event = state ? 'FullscreenOn' : 'FullscreenOff';
     if (event == 'FullscreenOn') {
       console.log('entered fullscreen, playing...')
-      v.play();
+      setTimeout(function() {v.play()},2000);
     } else {
       console.log('exited fullscreen, pausing...')
       this.className = "hide";
