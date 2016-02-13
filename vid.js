@@ -8,19 +8,25 @@ $(document).ready(function() {
     if (v.webkitRequestFullscreen) {
       v.className = "";
       v.webkitRequestFullscreen();
-      v.play();
     }
-    // v.play();
 
     $("#" + m).on("ended", function() {
       this.webkitExitFullscreen();
       this.className = "hide";
     });
 
-    // Listen for exiting fullscreen, hide video element.
-    $("#" + m).on("webkitfullscreenchange", function(e) {
+    // Detect fullscreen entered or exited for play state
+    $("#" + m).bind('webkitfullscreenchange', function(e) {
+    var state = document.webkitIsFullScreen;
+    var event = state ? 'FullscreenOn' : 'FullscreenOff';
+    if (event == 'FullscreenOn') {
+      console.log('entered fullscreen, playing...')
+      v.play();
+    } else {
+      console.log('exited fullscreen, pausing...')
       this.className = "hide";
-      // v.pause();
-    })
+      v.pause();
+    }
+    });
   })
 })
