@@ -43,6 +43,7 @@ html, body {
 
 .cell:hover {
   background-position: left bottom;
+  cursor: pointer;
 }
 
 .cell h1 {
