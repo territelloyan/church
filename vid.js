@@ -2,7 +2,7 @@ $(document).ready(function() {
   setTimeout(function() {
     $("#logo").animate({"height":"120px"},1000);
     setTimeout(function(){
-      $(".cell").animate({"opacity":"100"},4000);
+      $(".cell,#credits").animate({"opacity":"100"},4000);
     },2000)},2000);
   $('.cell').on('click', function() {
     var element = this.getElementsByTagName('video');
