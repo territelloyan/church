@@ -119,6 +119,18 @@ html, body {
   transform:translateY(-50%);
 }
 
+#hand, #tap {
+  animation:slide 2s linear infinite;
+}
+
+@keyframes slide {
+  0% { transform:translateX(0px); }
+  25% { transform:translateX(-25px); }
+  50% { transform:translateX(0px); }
+  75% { transform:translateX(25px); }
+  100% { transform:translateX(0px); }
+}
+
 #overlay-text {
   position: relative;
   top: 35%;
