@@ -12,6 +12,6 @@ $(document).ready(function() {
     $("#overlay").fadeOut();
     i = setTimeout(function() {
       $("#overlay").fadeIn();
-    }, 5000);
+    }, 20000);
   })
 })
