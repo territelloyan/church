@@ -78,16 +78,6 @@ html, body {
   background-position: 250%;
 }
 
-/*#sp {
-  background:linear-gradient(to right, rgba(66,129,191,1) 50%, rgba(210,210,210,1) 50%);
-  background-size:200% 100%;
-  background-position:right bottom;
-}*/
-
-#sp:hover {
-  /*background-position:left bottom;*/
-}
-
 #rb:hover {
   background-position: center;
 }
