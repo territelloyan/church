@@ -24,7 +24,7 @@ html, body {
 
 .row {
   display: table-row;
-  width: 100%;
+  width: 1440px;
   max-height: 30%;
 }
 
@@ -40,7 +40,7 @@ html, body {
   background: linear-gradient(to right, rgba(66, 129, 191, 1) 50%, rgba(210, 210, 210, 1) 50%);
   background-position: right bottom;
   background-size: 200% 100%;
-  /*opacity:0;*/
+  width: 25%;
 }
 
 .cell:hover {
@@ -49,38 +49,50 @@ html, body {
   background-position: left bottom;
 }
 
+.cell-content {
+  /*background-color:rgba(210,210,210,0.8);*/
+  padding:1.5%;
+  border-radius:5px;
+  /*max-width:50%;*/
+  overflow-x:auto;
+}
+
 .cell h1 {
   font-weight: 700;
   text-align: center;
+  line-height:1;
 }
 
 .cell p {
   display: block;
-  width: 65%;
-  margin: 0 auto;
+  width: 100%;
+  text-align:center;
+  margin: 0 auto 0.25em;
 }
 
-.cell-clean {
+.clean {
   display: table-cell;
   vertical-align: middle;
+  background-color:rgba(240,240,240,1);
 }
 
-.cell-clean img {
+.clean img {
   width: 340px;
   height: auto;
   transition: .25s linear;
 }
 
-#rb {
+/*#rb {
   background-color: rgba(210, 210, 210, 1);
   background-image: url('http://www.raybird.org/images/photos/Mui.jpg');
   background-repeat: no-repeat;
-  background-position: 250%;
+  background-position: 350%;
+  background-size:cover;
 }
 
 #rb:hover {
   background-position: center;
-}
+}*/
 
 #credits {
   font-size: 10px;
