@@ -3,9 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>Trinity Mission Wall</title>
-    <script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+    <!-- <script type="text/javascript" src="jquery-3.2.1.min.js"></script> -->
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="script.js"></script>
     <script type="text/javascript">
 
     </script>
@@ -22,16 +22,15 @@
         </div>
       </div>
     </div>
-
     <script type="text/javascript">
     $.getJSON("data.json", function(data) {
       for(var i=0; i<data.missions.length; i++) {
-        // var card = new Card(data.missions[i].id, data.missions[i].longDesc, data.missions[i].img, data.missions[i].vid)
+        // var card = data.missions[i];new Card(data.missions[i].id, data.missions[i].longDesc, data.missions[i].img, data.missions[i].vid).create()
         $(".page__block--left").append(
-          "<div class='card--small' id='" + data.missions[i].id +"'><h2>" + data.missions[i].id + "</h2></div>"
+          "<div class='card--small' id='" + data.missions[i].id +"'><h2>" + data.missions[i].name + "</h2></div>"
         );
         $(".page__block--right").append(
-          "<div class='card card--hide' id='" + data.missions[i].id + "'><h2 class='card__header'>" + data.missions[i].id + "</h2><div class='card__img'><img src='" + data.missions[i].img + "' /></div><div class='card__bio'>" + data.missions[i].longDesc + "</div><div class='card__vid'>" + data.missions[i].vid + "</div>"
+          "<div class='card card--hide' id='" + data.missions[i].id + "'><h2>" + data.missions[i].name + "</h2><div class='card__bio'>" + data.missions[i].longDesc + "</div><div class='card__img'><img src='" + data.missions[i].img + "' /></div><div class='card__vid'><video src='" + data.missions[i].vid + "'></video></div><span class='card__close'>Close</p></div>"
         )
       }
     })
@@ -41,9 +40,13 @@
         $(this).toggleClass("js-page__block--active");
       })
       $(".card--small").click(function() {
+        $(".page__block--right > div").hide();
         var id = $(this).attr('id');
-        $(".page__block--right").find(id).toggleClass("card--hide");
-        console.log($(this).attr('id'));
+        $(".page__block--right #"+id).show();
+        console.log(id);
+      })
+      $(".card__close").click(function() {
+        $(this).parent().hide();
       })
     })
     </script>
