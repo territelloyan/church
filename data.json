@@ -1,14 +1,16 @@
 {
   "missions": [
     {
-      "id":"mission 1",
+      "id":"miss1",
+      "name": "Mission 1",
       "desc": "This is a string description for a mission",
       "longDesc": "This is the mission's lond description in case a short one is used someplace else.",
       "img": "phase1badge.png",
       "vid": ""
     },
     {
-      "id": "mission 2",
+      "id": "miss2",
+      "name": "Mission 2",
       "desc": "This is a string description for a second mission",
       "longDesc": "This is the mission's lond description in case a short one is used someplace else.",
       "img": "phase2badge.png",
