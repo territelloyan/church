@@ -5,6 +5,7 @@
     <title>Trinity Mission Wall</title>
     <!-- <script type="text/javascript" src="jquery-3.2.1.min.js"></script> -->
     <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="style.css">
     <script type="text/javascript">
 
@@ -21,19 +22,27 @@
 
         </div>
       </div>
+      <span class="nav nav--up" id="nav--up"><img src="up.png" /></span>
+      <span class="nav nav--down" id="nav--down"><img src="down.png" /></span>
     </div>
     <script type="text/javascript">
-    $.getJSON("data.json", function(data) {
-      for(var i=0; i<data.missions.length; i++) {
-        // var card = data.missions[i];new Card(data.missions[i].id, data.missions[i].longDesc, data.missions[i].img, data.missions[i].vid).create()
-        $(".page__block--left").append(
-          "<div class='card--small' id='" + data.missions[i].id +"'><h2>" + data.missions[i].name + "</h2></div>"
-        );
-        $(".page__block--right").append(
-          "<div class='card card--hide' id='" + data.missions[i].id + "'><h2>" + data.missions[i].name + "</h2><div class='card__bio'>" + data.missions[i].longDesc + "</div><div class='card__img'><img src='" + data.missions[i].img + "' /></div><div class='card__vid'><video src='" + data.missions[i].vid + "'></video></div><span class='card__close'>Close</p></div>"
-        )
+    for(var i=0; i<15; i++) {
+    // for(var i=0; i<data.missions.length; i++) {
+      for(var i=0; i<15; i++) {
+        $(".page__block--left").append("<div class='card--small'><h2>Mission " + (i+1) + "</h2></div>");
       }
-    })
+    // $.getJSON("data.json", function(data) {
+    //   for(var i=0; i<data.missions.length; i++) {
+    //     // var card = data.missions[i];new Card(data.missions[i].id, data.missions[i].longDesc, data.missions[i].img, data.missions[i].vid).create()
+    //     $(".page__block--left").append(
+    //       "<div class='card--small' id='" + data.missions[i].id +"'><h2>" + data.missions[i].name + "</h2></div>"
+    //     );
+    //     $(".page__block--right").append(
+    //       "<div class='card card--hide' id='" + data.missions[i].id + "'><h2>" + data.missions[i].name + "</h2><div class='card__bio'>" + data.missions[i].longDesc + "</div><div class='card__img'><img src='" + data.missions[i].img + "' /></div><iframe src='https://www.youtube.com/embed/" + data.missions[i].vid + "' width='640' height='360' frameborder='0' autoplay></iframe><span class='card__close'>Close</p></div>"
+    //     )
+    //   }
+    // })
+  }
 
     $(document).ready(function() {
       $(".card--small").hover(function() {
@@ -48,6 +57,35 @@
       $(".card__close").click(function() {
         $(this).parent().hide();
       })
+    })
+    </script>
+    <script type="text/javascript">
+    function scroll() {
+      $(".page__block--left").animate({
+        scrollTop: amount
+      }, 100, 'linear', function() {
+        if (amount != '') {
+          scroll();
+        }
+      })
+    }
+
+    setInterval(function() {
+      $(".nav--down").effect("bounce", { distance: -15, times: 3 }, 1000 );
+      $(".nav--up").effect("bounce", {distance: 15, times: 3 }, 1000 );
+    }, 5000);
+
+    $("#nav--up").hover(function() {
+      amount = '-=30';
+      scroll();
+    }, function() {
+      amount = '';
+    });
+    $("#nav--down").hover(function() {
+      amount = '+=30';
+      scroll();
+    }, function() {
+      amount = '';
     })
     </script>
   </body>

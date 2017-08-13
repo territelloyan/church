@@ -21,12 +21,16 @@ html, body {
 .page__block--left {
   position:relative;
   display: inline-block;
-  margin:10px auto;
-  width:35%;
+  margin:10px auto 10px 3%;
+  width:25%;
   height:95%;
   overflow-y:scroll;
   color:rgba(245,245,245,0.75);
 }
+/*page__block--scroll {
+  position: relative;
+  overflow-y: scroll;
+}*/
 .page__block--right {
   position:relative;
   width:60%;
@@ -69,10 +73,16 @@ html, body {
   display:inline-block;
   vertical-align: middle;
   float:right;
+  width:30%;
+  margin-bottom:30px;
+}
+
+.card__img img {
+  width:100%;
 }
 .card__bio {
-  display:block;
-  width:75%;
+  display:inline-block;
+  width:65%;
   text-align: justify;
   padding: 5px;
 }
@@ -82,4 +92,25 @@ html, body {
   height:300px;
 }
 
-.card__close { cursor: pointer; }
+.card__close { cursor: pointer; display:block; }
+
+.nav {
+  display:block;
+  position:fixed;
+  z-index:10;
+  left:3%;
+  width:64px;
+  cursor: pointer:
+}
+
+.nav img {
+  width:100%;
+  height:auto;
+}
+.nav--up {
+  top:5%;
+}
+
+.nav--down {
+  bottom:5%;
+}
