@@ -40,7 +40,7 @@ html, body {
 }
 
 .card {
-  height:auto;
+  height:100%;
   margin:10px auto;
   width:90%;
   background-color:rgba(245,245,245,0.75);
@@ -67,14 +67,19 @@ html, body {
   cursor:pointer;
 }
 
-.card__header { }
+.card__header {
+  display:inline-block;
+ }
+
+.card__data {
+  position:relative;
+  margin-bottom:15px;
+}
 
 .card__img {
   display:inline-block;
   vertical-align: middle;
-  float:right;
   width:30%;
-  margin-bottom:30px;
 }
 
 .card__img img {
@@ -92,7 +97,13 @@ html, body {
   height:300px;
 }
 
-.card__close { cursor: pointer; display:block; }
+.card__close {
+  position:relative;
+  top:-30px;
+  left:32%;
+  cursor: pointer;
+  display:inline-block;
+}
 
 .nav {
   display:block;
