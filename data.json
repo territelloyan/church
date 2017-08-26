@@ -2,11 +2,11 @@
   "missions": [
     {
       "id":"miss1",
-      "name": "Mission 1",
+      "name": "Camp Ray Bird",
       "desc": "This is a string description for a mission",
       "longDesc": "This is the mission's lond description in case a short one is used someplace else.",
       "img": "phase1badge.png",
-      "vid": "-HtIvuEg8ZU"
+      "vid": "<div style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://www.youtube.com/embed/-HtIvuEg8ZU?ecver=2&autoplay=0&controls=0&showinfo=0&rel=0' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
     },
     {
       "id": "miss2",
