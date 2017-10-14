@@ -1,20 +1,23 @@
 {
   "missions": [
-    {
-      "id":"miss1",
-      "name": "Camp Ray Bird",
-      "desc": "This is a string description for a mission",
-      "longDesc": "This is the mission's lond description in case a short one is used someplace else.",
-      "img": "http://via.placeholder.com/220x190",
-      "vid": "<div style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://www.youtube.com/embed/-HtIvuEg8ZU?ecver=2&autoplay=0&controls=0&showinfo=0&rel=0' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
-    },
-    {
-      "id": "miss2",
-      "name": "Mission 2",
-      "desc": "This is a string description for a second mission",
-      "longDesc": "This is the mission's lond description in case a short one is used someplace else.",
-      "img": "http://via.placeholder.com/220x190",
-      "vid": ""
-    }
+    { "id":"miss1",
+      "content": {
+        "name": "Camp Ray Bird",
+        "desc": "This is a string description for a mission",
+        "longDesc": "This is the mission's lond description in case a short one is used someplace else.",
+        "img": "https://c1.staticflickr.com/5/4414/36198424463_42777eb515_b.jpg",
+        "vid": "<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://www.youtube.com/embed/-HtIvuEg8ZU?ecver=2&autoplay=0&controls=0&showinfo=0&rel=0&enablejsapi=1' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
+        }
+      },
+      { "id":"miss2",
+        "content": {
+          "id": "miss2",
+          "name": "Mission 2",
+          "desc": "This is a string description for a second mission",
+          "longDesc": "This is the mission's lond description in case a short one is used someplace else.",
+          "img": "",
+          "vid": "<iframe width='560' height='315' src='https://www.youtube.com/embed/GsWphB9dLkQ?rel=0&amp;controls=0&amp;showinfo=0&enablejsapi=1' frameborder='0' allowfullscreen></iframe>"
+        }
+      }
   ]
 }
