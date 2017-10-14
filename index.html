@@ -5,54 +5,93 @@
     <title>Trinity Mission Wall</title>
     <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
     <script type="text/javascript">
     </script>
   </head>
   <body>
     <div class="page">
-      <div class="page__block">
-        <div class="page__block--left">
-          <span class="card__header"><h1>Missionaries</h1></span>
-        </div>
+        <div class="page__block--left"></div>
         <div class="page__block--right" id="page__block--right"></div>
       </div>
-      <span class="nav nav--up" id="nav--up"><img src="up.png" /></span>
-      <span class="nav nav--down" id="nav--down"><img src="down.png" /></span>
-    </div>
-    <script type="text/javascript">
-    // for(var i=0; i<15; i++) {
-    // for(var i=0; i<data.missions.length; i++) {
-      // for(var i=0; i<15; i++) {
-      //   $(".page__block--left").append("<div class='card--small'><h2>Mission " + (i+1) + "</h2></div>");
-      // }
-    $.getJSON("data.json", function(data) {
-      for(var i=0; i<data.missions.length; i++) {
-        // var card = data.missions[i];new Card(data.missions[i].id, data.missions[i].longDesc, data.missions[i].img, data.missions[i].vid).create()
-        $(".page__block--left").append(
-          "<div class='card--small' id='" + data.missions[i].id +"'><h2>" + data.missions[i].name + "</h2></div>"
-        );
-        $(".page__block--right").append(
-          "<div class='card card--hide' id='" + data.missions[i].id + "'><h2 class='card__header'>" + data.missions[i].name + "</h2><span class='card__close'>Close</span><div class='card__data'><div class='card__bio'>" + data.missions[i].longDesc + "</div><div class='card__img'><img src='" + data.missions[i].img + "' /></div></div>" + data.missions[i].vid + "</div>"
-        )
-      }
-    })
-  // }
+        <span class="nav nav--up" id="nav--up"><img src="up.png" /></span>
+        <span class="nav nav--down" id="nav--down"><img src="down.png" /></span>
+    <script>
+      function Card(longDesc, img, video) {
+        this.desc = longDesc;
+        this.img = img;
+        this.video = video;
 
+        console.log(this.desc)
+
+        var container = document.getElementById("page__block--right");
+        var card = document.createElement("div");
+        card.className = "card";
+
+        var close = document.createElement("div");
+        close.className = "card__close";
+        close.id = "close";
+        close.innerHTML = "<p>Close</p>"
+        card.appendChild(close);
+
+        var img = document.createElement('div');
+        img.className = "card__img";
+        img.style.backgroundImage = "url(" + this.img + ")";
+        card.appendChild(img);
+
+        var bio = document.createElement('div');
+        bio.className = "card__bio";
+        bio.innerHTML = this.desc
+        card.appendChild(bio)
+
+        var vid = document.createElement('div');
+        vid.className = "card__video"
+        vid.innerHTML = this.video;
+        card.appendChild(vid);
+
+        this.create = function() {
+          container.appendChild(card);
+        }
+      }
+    </script>
+    <script type="text/javascript">
     $(document).ready(function() {
-      $(".card--small").hover(function() {
-        $(this).toggleClass("js-page__block--active");
-      })
+      $.getJSON("data.json", function(data) {
+      for(var i=0; i<data.missions.length; i++) {
+        $(".page__block--left").append(
+          "<div class='card--small' id='" + data.missions[i].id +"'><h2>" + data.missions[i].content.name + "</h2></div>"
+        );
+      }
       $(".card--small").click(function() {
-        $(".page__block--right > div").hide();
         var id = $(this).attr('id');
-        $(".page__block--right #"+id).show();
-        console.log(id);
-      })
-      $(".card__close").click(function() {
-        $(this).parent().hide();
+        $("#page__block--right").empty();
+        $.getJSON("data.json").done(function(data) {
+          for(var j=0; j<data.missions.length; j++) {
+            console.log(id == data.missions[j].id)
+            if(id == data.missions[j].id) {
+              var card = new Card(data.missions[j].content.longDesc, data.missions[j].content.img, data.missions[j].content.vid);
+              card.create();
+            }
+          }
+        })
       })
     })
+  })
+    </script>
+
+    <script>
+    function toggleVideo(id, state) {
+      var div = document.getElementById("right_" + id);
+      console.log(div)
+      var iframe = div.getElementsByTagName("iframe")[0].contentWindow;
+      div.style.display = state == 'hide' ? 'none' : '';
+      func = state == 'hide' ? 'pauseVideo' : 'playVideo';
+      iframe.postMessage(' {"event":"command", "func":"' + func + '","args":""}','*');
+    }
+
+    function close() {
+      document.getElementById("close").parenNode.innerHTML = "";
+    }
     </script>
     <script type="text/javascript">
     function scroll() {
@@ -65,23 +104,23 @@
       })
     }
 
-    setInterval(function() {
-      $(".nav--down").effect("bounce", { distance: -15, times: 3 }, 1000 );
-      $(".nav--up").effect("bounce", {distance: 15, times: 3 }, 1000 );
-    }, 5000);
-
-    $("#nav--up").hover(function() {
-      amount = '-=30';
-      scroll();
-    }, function() {
-      amount = '';
-    });
-    $("#nav--down").hover(function() {
-      amount = '+=30';
-      scroll();
-    }, function() {
-      amount = '';
-    })
+    // setInterval(function() {
+    //   $(".nav--down").effect("bounce", { distance: -15, times: 3 }, 1000 );
+    //   $(".nav--up").effect("bounce", {distance: 15, times: 3 }, 1000 );
+    // }, 5000);
+    //
+    // $("#nav--up").hover(function() {
+    //   amount = '-=30';
+    //   scroll();
+    // }, function() {
+    //   amount = '';
+    // });
+    // $("#nav--down").hover(function() {
+    //   amount = '+=30';
+    //   scroll();
+    // }, function() {
+    //   amount = '';
+    // })
     </script>
   </body>
 </html>

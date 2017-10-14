@@ -1,127 +1,161 @@
 html, body {
-  height:100%;
-  width:100%;
+  height: 100%;
+  width: 100%;
   padding: 0;
   margin: 0;
+  overflow:hidden;
+  font-family:sans-serif;
+  color: rgba(255,255,255,0.65);
+  font-weight:200;
+}
+.page {
+  height: 100%;
+  display:grid;
+  grid-template-columns: 80px 30% auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    ". left right";
+  grid-gap: 10px;
+  background-image:url('https://c2.staticflickr.com/4/3444/3735819827_da537fd58e_b.jpg');
+  background-size:cover;
+  background-repeat: no-repat;
 }
 
-.page {
-  width: 100%;
-  height:100%;
-  background-color:rgba(10,10,10,0.85);
-  font-family:sans-serif;
+.page::before {
+  content: '';
+  position:absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(to bottom left, rgba(0,0,0,1.0), rgba(0,0,0,0.0));
+  opacity: .7;
 }
-.page__block {
-  width:95%;
-  height:100%;
-  margin:0 auto;
-  text-align: center;
-  overflow-y: hidden;
+
+.page > div {
+  background:rgba(0,0,0,0.25);
+  z-index:10;
 }
+
 .page__block--left {
-  position:relative;
-  display: inline-block;
-  margin:10px auto 10px 3%;
-  width:25%;
-  height:95%;
-  overflow-y:scroll;
-  color:rgba(245,245,245,0.75);
+  grid-area:left;
 }
-/*page__block--scroll {
-  position: relative;
-  overflow-y: scroll;
-}*/
+
 .page__block--right {
-  position:relative;
-  width:60%;
-  height:95%;
-  float:right;
-  overflow: scroll;
+  grid-area:right;
 }
 
 .card {
   height:100%;
-  margin:10px auto;
-  width:90%;
-  background-color:rgba(245,245,245,0.75);
-  color:rgba(10,10,10,0.8);
-  padding:10px;
-}
-
-.card--hide {
-  display:none;
-}
-
-.card--small {
-  display:block;
+  display: grid !important;
+  grid-gap: 10px;
+  grid-template-rows: 20px 180px auto;
+  grid-template-columns: 180px auto;
+  grid-template-areas:
+    "close ."
+    "img info"
+    "video video";
+  margin: 10px;
   position:relative;
-  height:auto;
-  margin:10px auto;
-  padding:5px 0;
-  border:1px solid #efefef;
 }
 
-.js-page__block--active {
-  background-color: rgba(245,245,245,0.9);
-  color:rgba(10,10,10,0.8);
-  cursor:pointer;
-}
-
-.card__header {
-  display:inline-block;
- }
-
-.card__data {
-  position:relative;
-  margin-bottom:15px;
-}
-
-.card__img {
-  display:inline-block;
-  vertical-align: middle;
-  width:30%;
-}
-
-.card__img img {
-  width:100%;
-}
-.card__bio {
-  display:inline-block;
-  width:65%;
-  text-align: justify;
-  padding: 5px;
-}
-.card__vid {
-  display:block;
-  width:95%;
-  height:300px;
+.card > div {
+  background-color: rgba(255,255,255,0.25);
+  padding: 10px;
+  justify-items: center;
 }
 
 .card__close {
-  position:relative;
-  top:-30px;
-  left:32%;
-  cursor: pointer;
-  display:inline-block;
+  grid-area: close;
+  background-color:rgba(0,0,0,0) !important;
+  align-self: center;
+  transition:color 0.25s ease-in-out;
 }
 
-.nav {
-  display:block;
-  position:fixed;
-  z-index:10;
-  left:3%;
-  width:64px;
-  cursor: pointer:
+.card__close:hover {
+  cursor:pointer;
+  color:rgb(0,0,0);
 }
 
-.nav img {
+.card__close::after {
+  position:absolute;
+  content:'';
+  top:0;
+  left:0;
+  width:0;
+  height:100%;
+  background-color:rgba(255,255,255,0.25);
+  transform-origin:left;
+  transition:width 0.25s ease-in-out;
+  grid-area: close;
+  z-index:-10;
+}
+
+.card__close:hover::after {
   width:100%;
-  height:auto;
-}
-.nav--up {
-  top:5%;
 }
 
-.nav--down {
-  bottom:5%;
+.card__img {
+  grid-area: img;
+  justify-items: center;
+  overflow:hidden;
+  border-radius:50%;
+  background-position:center center;
+  background-repeat: no-repeat;
+  background-size:cover;
 }
+
+.card__bio {
+  grid-area: info;
+  font-size:auto;
+  overflow:auto;
+}
+.card__bio p {
+  margin-top: 0;
+  display:block;
+}
+.card__video {
+  height:100%;
+  background-color: rgba(0,0,0,0) !important;
+  padding:0 !important;
+  grid-area: video;
+}
+
+.card--small {
+  position:relative;
+  max-width: 80%;
+  border: 2px solid white;
+  height: auto;
+  margin: 10px auto;
+  padding: 25px;
+  text-align:center;
+  font-weight:900;
+  transition:color 0.25s ease-in-out;
+}
+
+.card--small::after {
+  position:absolute;
+  content:'';
+  top:0;
+  left:0;
+  width:0;
+  height:100%;
+  background-color:rgba(255,255,255,0.25);
+  transform-origin:left;
+  transition:width 0.25s ease-in-out;
+  grid-area: close;
+  z-index:-10;
+}
+
+.card--small:hover {
+  cursor:pointer;
+  color:rgb(0,0,0);
+}
+
+.card--small:hover::after {
+  width:100%;
+}
+
+.card--hide { display:none }
+
+.name { font-weight: 900; }
