@@ -8,7 +8,7 @@ html, body {
   color: rgba(255,255,255,0.65);
   font-weight:200;
 }
-.page {
+.main {
   height: 100%;
   display:grid;
   grid-template-columns: 80px 30% auto;
@@ -21,7 +21,7 @@ html, body {
   background-repeat: no-repat;
 }
 
-.page::before {
+.main::before {
   content: '';
   position:absolute;
   top: 0;
@@ -29,30 +29,30 @@ html, body {
   left: 0;
   right: 0;
   background-image: linear-gradient(to bottom left, rgba(0,0,0,1.0), rgba(0,0,0,0.0));
-  opacity: .7;
+  opacity: 0.9;
 }
 
-.page > div {
+.main > div {
   background:rgba(0,0,0,0.25);
-  z-index:10;
+  z-index:1;
 }
 
-.page__block--left {
+.left {
   grid-area:left;
 }
 
-.page__block--right {
+.right {
   grid-area:right;
 }
 
 .card {
   height:100%;
-  display: grid !important;
+  display: grid;
   grid-gap: 10px;
   grid-template-rows: 20px 180px auto;
   grid-template-columns: 180px auto;
   grid-template-areas:
-    "close ."
+    ". close"
     "img info"
     "video video";
   margin: 10px;
@@ -65,21 +65,22 @@ html, body {
   justify-items: center;
 }
 
-.card__close {
+.close {
   grid-area: close;
-  background-color:rgba(0,0,0,0) !important;
   align-self: center;
-  transition:color 0.25s ease-in-out;
+  background-color:rgba(0,0,0,0) !important;
+  text-align:right;
+  position:relative;
+  z-index:4;
 }
 
-.card__close:hover {
+.close:hover {
   cursor:pointer;
-  color:rgb(0,0,0);
 }
 
-.card__close::after {
-  position:absolute;
+.close::after {
   content:'';
+  position:absolute;
   top:0;
   left:0;
   width:0;
@@ -91,11 +92,11 @@ html, body {
   z-index:-10;
 }
 
-.card__close:hover::after {
+.close:hover::after {
   width:100%;
 }
 
-.card__img {
+.img {
   grid-area: img;
   justify-items: center;
   overflow:hidden;
@@ -105,16 +106,16 @@ html, body {
   background-size:cover;
 }
 
-.card__bio {
+.info {
   grid-area: info;
   font-size:auto;
   overflow:auto;
 }
-.card__bio p {
+.info p {
   margin-top: 0;
   display:block;
 }
-.card__video {
+.video {
   height:100%;
   background-color: rgba(0,0,0,0) !important;
   padding:0 !important;
@@ -155,7 +156,3 @@ html, body {
 .card--small:hover::after {
   width:100%;
 }
-
-.card--hide { display:none }
-
-.name { font-weight: 900; }

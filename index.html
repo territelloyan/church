@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8">
     <title>Trinity Mission Wall</title>
-    <script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-    <link rel="stylesheet" href="style2.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> -->
+    <link rel="stylesheet" href="style.css">
     <script type="text/javascript">
     </script>
   </head>
   <body>
-    <div class="page">
-        <div class="page__block--left"></div>
-        <div class="page__block--right" id="page__block--right"></div>
+    <div class="main">
+        <div class="left"></div>
+        <div class="right" id="right"></div>
       </div>
         <span class="nav nav--up" id="nav--up"><img src="up.png" /></span>
         <span class="nav nav--down" id="nav--down"><img src="down.png" /></span>
@@ -24,28 +24,28 @@
 
         console.log(this.desc)
 
-        var container = document.getElementById("page__block--right");
+        var container = document.getElementById("right");
         var card = document.createElement("div");
         card.className = "card";
 
         var close = document.createElement("div");
-        close.className = "card__close";
+        close.className = "close";
         close.id = "close";
-        close.innerHTML = "<p>Close</p>"
+        close.innerHTML = "Close";
         card.appendChild(close);
 
         var img = document.createElement('div');
-        img.className = "card__img";
+        img.className = "img";
         img.style.backgroundImage = "url(" + this.img + ")";
         card.appendChild(img);
 
         var bio = document.createElement('div');
-        bio.className = "card__bio";
+        bio.className = "info";
         bio.innerHTML = this.desc
         card.appendChild(bio)
 
         var vid = document.createElement('div');
-        vid.className = "card__video"
+        vid.className = "video"
         vid.innerHTML = this.video;
         card.appendChild(vid);
 
@@ -53,18 +53,17 @@
           container.appendChild(card);
         }
       }
-    </script>
-    <script type="text/javascript">
+
     $(document).ready(function() {
       $.getJSON("data.json", function(data) {
       for(var i=0; i<data.missions.length; i++) {
-        $(".page__block--left").append(
+        $(".left").append(
           "<div class='card--small' id='" + data.missions[i].id +"'><h2>" + data.missions[i].content.name + "</h2></div>"
         );
       }
       $(".card--small").click(function() {
         var id = $(this).attr('id');
-        $("#page__block--right").empty();
+        $("#right").empty();
         $.getJSON("data.json").done(function(data) {
           for(var j=0; j<data.missions.length; j++) {
             console.log(id == data.missions[j].id)
@@ -77,9 +76,11 @@
       })
     })
   })
-    </script>
 
-    <script>
+    $("#close").click(function() {
+      $(".card").empty();
+    })
+
     function toggleVideo(id, state) {
       var div = document.getElementById("right_" + id);
       console.log(div)
@@ -89,11 +90,6 @@
       iframe.postMessage(' {"event":"command", "func":"' + func + '","args":""}','*');
     }
 
-    function close() {
-      document.getElementById("close").parenNode.innerHTML = "";
-    }
-    </script>
-    <script type="text/javascript">
     function scroll() {
       $(".page__block--left").animate({
         scrollTop: amount
