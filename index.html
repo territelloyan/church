@@ -17,16 +17,15 @@
         <span class="nav nav--up" id="nav--up"><img src="up.png" /></span>
         <span class="nav nav--down" id="nav--down"><img src="down.png" /></span>
     <script>
-      function Card(longDesc, img, video) {
+      function Card(id, longDesc, img, video) {
         this.desc = longDesc;
         this.img = img;
         this.video = video;
 
-        console.log(this.desc)
-
         var container = document.getElementById("right");
         var card = document.createElement("div");
         card.className = "card";
+        card.id = "card_" + id;
 
         var close = document.createElement("div");
         close.className = "close";
@@ -46,6 +45,7 @@
 
         var vid = document.createElement('div');
         vid.className = "video"
+        vid.id = "video";
         vid.innerHTML = this.video;
         card.appendChild(vid);
 
@@ -53,7 +53,6 @@
           container.appendChild(card);
         }
       }
-
     $(document).ready(function() {
       $.getJSON("data.json", function(data) {
       for(var i=0; i<data.missions.length; i++) {
@@ -61,34 +60,35 @@
           "<div class='card--small' id='" + data.missions[i].id +"'><h2>" + data.missions[i].content.name + "</h2></div>"
         );
       }
-      $(".card--small").click(function() {
-        var id = $(this).attr('id');
-        $("#right").empty();
-        $.getJSON("data.json").done(function(data) {
-          for(var j=0; j<data.missions.length; j++) {
-            console.log(id == data.missions[j].id)
-            if(id == data.missions[j].id) {
-              var card = new Card(data.missions[j].content.longDesc, data.missions[j].content.img, data.missions[j].content.vid);
-              card.create();
-            }
-          }
-        })
-      })
     })
   })
 
-    $("#close").click(function() {
+  $(".left").on("click", ".card--small", function() {
+    var id = $(this).attr('id');
+    $("#right").empty();
+    $.getJSON("data.json").done(function(data) {
+      for(var j=0; j<data.missions.length; j++) {
+        console.log(id == data.missions[j].id)
+        if(id == data.missions[j].id) {
+          var card = new Card(data.missions[j].id, data.missions[j].content.longDesc, data.missions[j].content.img, data.missions[j].content.vid);
+          card.create();
+        }
+      }
+    })
+  })
+
+    $(".right").on("click", "#close", function() {
       $(".card").empty();
     })
 
-    function toggleVideo(id, state) {
-      var div = document.getElementById("right_" + id);
-      console.log(div)
-      var iframe = div.getElementsByTagName("iframe")[0].contentWindow;
-      div.style.display = state == 'hide' ? 'none' : '';
-      func = state == 'hide' ? 'pauseVideo' : 'playVideo';
-      iframe.postMessage(' {"event":"command", "func":"' + func + '","args":""}','*');
-    }
+    // function toggleVideo(state) {
+    //   var div = document.getElementById("video");
+    //   console.log(div)
+    //   var iframe = div.getElementsByTagName("iframe")[0].contentWindow;
+    //   div.style.display = state == 'hide' ? 'none' : '';
+    //   func = state == 'hide' ? 'pauseVideo' : 'playVideo';
+    //   iframe.postMessage(' {"event":"command", "func":"' + func + '","args":""}','*');
+    // }
 
     function scroll() {
       $(".page__block--left").animate({
@@ -99,7 +99,6 @@
         }
       })
     }
-
     // setInterval(function() {
     //   $(".nav--down").effect("bounce", { distance: -15, times: 3 }, 1000 );
     //   $(".nav--up").effect("bounce", {distance: 15, times: 3 }, 1000 );
