@@ -5,6 +5,7 @@
         "name": "Camp Ray Bird",
         "desc": "This is a string description for a mission",
         "longDesc": "This is the mission's lond description in case a short one is used someplace else.",
+        "support": "Prayer for camp counselors, prayer for Snail Mail",
         "img": "http://www.raybird.org/images/photos/Mui.jpg",
         "vid": "<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://www.youtube.com/embed/-HtIvuEg8ZU?ecver=2&autoplay=1&controls=0&showinfo=0&rel=0&enablejsapi=1' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
         }

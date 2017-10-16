@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Trinity Mission Wall</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> -->
+    <link rel="stylesheet" href="style2.css">
+    <script type="text/javascript">
+    </script>
+  </head>
+  <body>
+    <div class="main" id="main">
+        <!-- <div class="left" id="left">
+          <div class="img"></div>
+          <div class="info"></div>
+        </div>
+        <div class="right" id="right">
+          <div class="video"></div>
+          <div class="support"></div>
+        </div> -->
+        <!-- <div class="close">Close</div> -->
+      </div>
+      <div class="menu">
+        <div class="scroll"></div>
+      </div>
+    <script>
+      function Card(id, longDesc, img, video, support) {
+        this.desc = longDesc;
+        this.img = img;
+        this.video = video;
+        this.support = support;
+
+        var main = document.getElementById("main");
+
+        var left = document.createElement("div");
+        left.className = "left";
+
+        var right = document.createElement("div");
+        right.className = "right";
+
+
+        var img = document.createElement('div');
+        img.className = "img";
+        img.style.backgroundImage = "url(" + this.img + ")";
+        left.appendChild(img);
+
+        var bio = document.createElement('div');
+        bio.className = "info";
+        bio.innerHTML = this.desc
+        left.appendChild(bio);
+
+        var vid = document.createElement('div');
+        vid.className = "video"
+        vid.id = "video";
+        vid.innerHTML = this.video;
+        right.appendChild(vid);
+
+        var support = document.createElement("div");
+        support.innerHTML = "<h2>Support this mission</h2>"
+        support.innerHTML += "<p>" + this.support + "</p>";
+        support.className = "support";
+        right.appendChild(support);
+
+        var close = document.createElement("div");
+        close.className = "close";
+        close.innerHTML = "Close";
+        main.appendChild(close);
+
+        this.create = function() {
+          main.appendChild(left);
+          main.appendChild(right);
+        }
+      }
+    $(document).ready(function() {
+      $(".left, .right").hide();
+      $.getJSON("data.json", function(data) {
+      for(var i=0; i<data.missions.length; i++) {
+        $(".scroll").append(
+          "<div class='card--small' id='" + data.missions[i].id +"'><h2>" + data.missions[i].content.name + "</h2></div>"
+        );
+      }
+    })
+  })
+
+  $(".scroll").on("click", ".card--small", function() {
+    $(".menu").hide();
+    $(".main").css("filter", "blur(0)");
+    var id = $(this).attr('id');
+    $("#right").empty();
+    $.getJSON("data.json").done(function(data) {
+      for(var j=0; j<data.missions.length; j++) {
+        console.log(id == data.missions[j].id)
+        if(id == data.missions[j].id) {
+          var card = new Card(data.missions[j].id, data.missions[j].content.longDesc, data.missions[j].content.img, data.missions[j].content.vid, data.missions[j].content.support);
+          card.create();
+        }
+      }
+    })
+  })
+
+    $(".main").on("click", ".close", function() {
+      $(".main").empty().css("filter", "blur(10px)");
+      $(".menu").show();
+
+    })
+
+    // function toggleVideo(state) {
+    //   var div = document.getElementById("video");
+    //   console.log(div)
+    //   var iframe = div.getElementsByTagName("iframe")[0].contentWindow;
+    //   div.style.display = state == 'hide' ? 'none' : '';
+    //   func = state == 'hide' ? 'pauseVideo' : 'playVideo';
+    //   iframe.postMessage(' {"event":"command", "func":"' + func + '","args":""}','*');
+    // }
+
+    function scroll() {
+      $(".page__block--left").animate({
+        scrollTop: amount
+      }, 100, 'linear', function() {
+        if (amount != '') {
+          scroll();
+        }
+      })
+    }
+    // setInterval(function() {
+    //   $(".nav--down").effect("bounce", { distance: -15, times: 3 }, 1000 );
+    //   $(".nav--up").effect("bounce", {distance: 15, times: 3 }, 1000 );
+    // }, 5000);
+    //
+    // $("#nav--up").hover(function() {
+    //   amount = '-=30';
+    //   scroll();
+    // }, function() {
+    //   amount = '';
+    // });
+    // $("#nav--down").hover(function() {
+    //   amount = '+=30';
+    //   scroll();
+    // }, function() {
+    //   amount = '';
+    // })
+    </script>
+  </body>
+</html>
