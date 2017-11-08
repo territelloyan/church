@@ -9,6 +9,14 @@ html, body {
   background-color:rgba(0,0,0,0.6);
   font-weight:200;
 }
+p {
+  margin: 10px;
+  font-size: 18px;
+  word-wrap: break-word;
+}
+
+h1, h2 { margin-left:10px; }
+
 .main {
   height: 100%;
   width:100%;
@@ -40,7 +48,7 @@ html, body {
 }
 
 .main > div {
-  padding:5px 0;
+  padding:15px 0 0 0;
 }
 
 .menu {
@@ -88,10 +96,6 @@ html, body {
     "contact";
   grid-gap:10px;
 }
-.close {
-  grid-area:close;
-  text-align:center;
-}
 
 .close {
   grid-area: close;
@@ -99,6 +103,8 @@ html, body {
   text-align:center;
   position:relative;
   z-index:4;
+  padding: 5px !important;
+  margin-bottom:10px;
 }
 
 .close:hover {
