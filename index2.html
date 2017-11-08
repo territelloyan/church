@@ -4,25 +4,20 @@
     <meta charset="utf-8">
     <title>Trinity Mission Wall</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> -->
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
     <link rel="stylesheet" href="style2.css">
     <script type="text/javascript">
     </script>
   </head>
   <body>
-    <div class="main" id="main">
-        <!-- <div class="left" id="left">
-          <div class="img"></div>
-          <div class="info"></div>
-        </div>
-        <div class="right" id="right">
-          <div class="video"></div>
-          <div class="support"></div>
-        </div> -->
-        <!-- <div class="close">Close</div> -->
-      </div>
+    <div class="main" id="main"></div>
       <div class="menu">
-        <div class="scroll"></div>
+        <div class="scroll">
+          <div class="nav">
+            <img class="nav--up" id="nav--up" src="up.png" />
+            <img class="nav--down" id="nav--down" src="down.png" />
+        </div>
+      </div>
       </div>
     <script>
       function Card(name, longDesc, img, video, support) {
@@ -85,28 +80,28 @@
   })
 
   $(".scroll").on("click", ".card--small", function() {
-    $(".menu").hide();
     $(".main").css("filter", "blur(0)");
     var id = $(this).attr('id');
-    $("#right").empty();
+    // $("#right").empty();
     $.getJSON("data.json").done(function(data) {
       for(var j=0; j<data.missions.length; j++) {
-        console.log(id == data.missions[j].id)
         if(id == data.missions[j].id) {
           var card = new Card(data.missions[j].content.name, data.missions[j].content.longDesc, data.missions[j].content.img, data.missions[j].content.vid, data.missions[j].content.support);
           card.create();
         }
       }
-    })
+    }).then(
+      $(".menu").fadeOut('fast')
+    );
   })
 
     $(".main").on("click", ".close", function() {
       $(".main").empty().css("filter", "blur(10px)");
-      $(".menu").show();
+      $(".menu").fadeIn(500);
     })
 
     function scroll() {
-      $(".page__block--left").animate({
+      $(".scroll").animate({
         scrollTop: amount
       }, 100, 'linear', function() {
         if (amount != '') {
@@ -114,23 +109,23 @@
         }
       })
     }
-    // setInterval(function() {
-    //   $(".nav--down").effect("bounce", { distance: -15, times: 3 }, 1000 );
-    //   $(".nav--up").effect("bounce", {distance: 15, times: 3 }, 1000 );
-    // }, 5000);
-    //
-    // $("#nav--up").hover(function() {
-    //   amount = '-=30';
-    //   scroll();
-    // }, function() {
-    //   amount = '';
-    // });
-    // $("#nav--down").hover(function() {
-    //   amount = '+=30';
-    //   scroll();
-    // }, function() {
-    //   amount = '';
-    // })
+    setInterval(function() {
+      $("#nav--down").effect("bounce", { distance: -15, times: 3 }, 1000 );
+      $("#nav--up").effect("bounce", {distance: 15, times: 3 }, 1000 );
+    }, 5000);
+
+    $("#nav--up").hover(function() {
+      amount = '-=30';
+      scroll();
+    }, function() {
+      amount = '';
+    });
+    $("#nav--down").hover(function() {
+      amount = '+=30';
+      scroll();
+    }, function() {
+      amount = '';
+    })
     </script>
   </body>
 </html>

@@ -8,6 +8,7 @@ html, body {
   color: rgba(255,255,255,0.65);
   background-color:rgba(0,0,0,0.6);
   font-weight:200;
+  overflow: hidden;
 }
 p {
   margin: 10px;
@@ -31,7 +32,6 @@ h1, h2 { margin-left:10px; }
   background-size:cover;
   background-repeat: no-repeat;
   filter:blur(10px);
-  overflow:hidden;
   z-index:-10;
 }
 
@@ -68,7 +68,32 @@ h1, h2 { margin-left:10px; }
 .scroll {
   grid-area:menu;
   background-color:rgba(0,0,0,0.25);
+  overflow:hidden;
 }
+
+.nav {
+  position:absolute;
+  height:100%;
+  width:8%;
+}
+
+.nav img {
+  display:block;
+  position:absolute;
+  width: 75%;
+  margin-left:22.5%;
+  filter:invert();
+}
+
+.nav--up {
+  top:75px;
+}
+
+.nav--down {
+  bottom:75px;
+}
+
+.nav--up:hover, .nav--down:hover { cursor: pointer;}
 
 .left {
   grid-area:left;
