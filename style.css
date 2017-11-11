@@ -172,10 +172,22 @@ h1, h2 { margin-left:10px; }
   display:block;
 }
 .video {
+  position:relative;
   height:100%;
   background-color:rgba(0,0,0,0) !important;
   padding: 0 !important;
   grid-area: video;
+}
+.video:after {
+  content:"";
+  height:100%;
+  width:100%;
+  grid-area:video;
+  display:block;
+  position:absolute;
+  top:0;
+  left:0;
+  z-index:10;
 }
 .support {
   background-color: rgba(0,0,0,0.55) !important;

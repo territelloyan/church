@@ -7,16 +7,16 @@
         "longDesc": "The mission of Ray Bird Ministries is to share the gospel of Jesus Christ with Michiana children and teens, nurture those believers, and prepare them for participation in local churches. Ray Bird Ministries specializes in serving families who could not otherwise afford meaningful camping experiences. Ray Bird Ministries is a 501(c)(3) nonprofit organization governed by a board of directors including: Linda Burrell, Phyllis Hueni, Randy Meert, John Rader, Tom Thompson, Don Wierenga, David Mui, Keith Walatka, Kristen Haubold, and Shawn Titus.",
         "support": "Prayer for camp counselors, our campers would find churches to continue to grow in their relationship with Jesus.",
         "img": "http://www.raybird.org/images/photos/Mui.jpg",
-        "vid": "<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://www.youtube.com/embed/-HtIvuEg8ZU?ecver=2&autoplay=1&controls=0&showinfo=0&rel=0&enablejsapi=1' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
+        "vid": "<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://www.youtube.com/embed/-HtIvuEg8ZU?ecver=2&modestbranding=1&autoplay=1&showinfo=0&controls=0&enablejsapi=1' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
         }
       },
       { "id":"miss2",
         "content": {
-          "name": "Global Fingerprints",
+          "name": "EFCA: Global Fingerprints",
           "desc": "School for children affected by the ebola epidemic",
           "longDesc": "update",
-          "img": "https://via.placeholder.com/180x180",
-          "vid": "<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://via.placeholder.com/852x464' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
+          "img": "https://go.efca.org/sites/default/files/resources/media/images/2013/09/efca-vertical-rgb.png",
+          "vid": "<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://www.youtube.com/embed/qKcs4XMmxdA?rel=0&controls=0&showinfo=0&autoplay=1&enablejsapi=1' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
         }
       },
       {"id": "miss3",
