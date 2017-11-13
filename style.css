@@ -114,11 +114,12 @@ h1, h2 { margin-left:10px; }
 .right {
   grid-area:right;
   display:grid;
-  grid-template-rows: auto 200px;
+  grid-template-rows: 464px 0 auto;
   grid-template-columns: auto;
   grid-template-areas:
     "video"
-    "contact";
+    " . "
+    "support";
   grid-gap:10px;
 }
 
@@ -174,7 +175,7 @@ h1, h2 { margin-left:10px; }
 .video {
   position:relative;
   height:100%;
-  background-color:rgba(0,0,0,0) !important;
+  background-color:rgba(0,0,0,0);
   padding: 0 !important;
   grid-area: video;
 }
@@ -190,7 +191,8 @@ h1, h2 { margin-left:10px; }
   z-index:10;
 }
 .support {
-  background-color: rgba(0,0,0,0.55) !important;
+  background-color: rgba(0,0,0,0.55);
+  grid-area: support;
 }
 .support h2 {
   margin-left:10px;
