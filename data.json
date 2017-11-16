@@ -16,61 +16,57 @@
           "desc": "School for children affected by the ebola epidemic",
           "longDesc": "update",
           "img": "https://go.efca.org/sites/default/files/resources/media/images/2013/09/efca-vertical-rgb.png",
-          "vid": "<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://www.youtube.com/embed/qKcs4XMmxdA?rel=0&controls=0&showinfo=0&autoplay=1&enablejsapi=1&rel=0' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
+          "vid": "<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://www.youtube.com/embed/qKcs4XMmxdA?modestbranding=1&autoplay=1&showinfo=0&controls=0&enablejsapi=1&rel=0' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
         }
       },
       {"id": "miss3",
       "content": {
         "name": "We Welcome Refugees",
         "desc": "Launched to position the global Church as a key agent in the current Europe/Syria refugee crisis.",
-        "longDesc": "This is the mission's lond description in case a short one is used someplace else.",
-        "img": "https://via.placeholder.com/180x180",
-        "vid": "<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://via.placeholder.com/852x464' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
+        "longDesc": "8.7 million Syrians are predicted to be displaced within the country in 2016, and 4.8 million have sought refuge in other countries since 2011. The UNHCR’s latest figures show the crisis is getting worse. Families are moving not to simply better their lives, but to literally save their lives. And at a time when the west is reeling in fear and anti-refugee rhetoric is ruling the headlines, we as the Church have a responsibility to respond.",
+        "support": "Pray for refugees globally as they look for peace for their families. Pray for organizations who share the love of Christ with refugees through outreach or sponsorship programs in the United States and abroad.",
+        "img": "https://marketflux.foundrycommerce.com/UserFiles/Images/e0559239-27e7-e611-80d4-0cc47a7eded5.jpg",
+        "vid": "<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><i>Video coming soon!</i></div>"
         }
       },
       {"id": "miss4",
       "content": {
         "name": "African Medical Alliance",
         "desc": " Source and promote healthcare delivery in areas of deepest poverty in rural Africa and throughout the world.",
-        "longDesc": "This is the mission's lond description in case a short one is used someplace else.",
-        "img": "https://via.placeholder.com/180x180",
-        "vid": "<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://via.placeholder.com/852x464' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
+        "longDesc": "The mission of African Medical Alliance, Inc. is to source and promote healthcare delivery in areas of deepest poverty in rural Africa and throughout the world. Working with like-minded organizations and people, the corporation provides sourcing for healthcare development, leadership development, and community development initiatives, resulting in positive advancements in healthcare access, delivery, and sustainability.",
+        "support":"",
+        "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQFsrz0qUXD99IJ2M5I3nX5Q3bqgudz6UeL4kIQk26nr_nfMF9",
+        "vid": "<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://www.youtube.com/embed/wB7RpCtSjQM?modestbranding=1&autoplay=1&showinfo=0&controls=0&enablejsapi=1&rel=0' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
         }
       },
       {"id": "miss5",
       "content": {
         "name": "Cru: Faculty Commons",
         "desc": "Bringing university resources together to advance the kingdom of Jesus.",
-        "longDesc": "This is the mission's lond description in case a short one is used someplace else.",
-        "img": "https://via.placeholder.com/180x180",
-        "vid": "<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://via.placeholder.com/852x464' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
+        "longDesc": "Faculty Commons, a ministry of Cru, is committed to bringing all the resources of the university (faculty, students, and ideas) to the world for the advance of the loving rule and reign of Jesus Christ. We in Faculty Commons are men and women who love the academy, who find the person and works of Jesus of Nazareth to be satisfying and true, and who look to Him as the beautiful hope for the world. We dream of the day when movements of Christian professors willingly wrestle with the ever-challenging question, 'As Christ-followers, what should we do in the academy?'",
+        "support":"",
+        "img": "https://upload.wikimedia.org/wikipedia/en/9/92/Campus_Crusade_Logo.jpg",
+        "vid": "<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><video autoplay style='position:absolute;width:100%;height:100%;left:0' allowfullscreen><source src='https://11-lvl3-pdl.vimeocdn.com/01/4001/2/70009674/176747045.mp4?expires=1510800817&token=0866e56ddebf77f5ac87b' /></video></div>"
         }
       },
       {"id": "miss6",
       "content": {
         "name": "Kids Alive",
         "desc":"Providing homes for venerable children in Romania.",
-        "longDesc": "Need update",
-        "img":"",
-        "vid":""
+        "longDesc": "Although Romania is now part of the European Union, and standards of living have risen in many Romanian cities, there is still terrible poverty in many of the poorer rural areas of the country. Over 300,000 orphans roam the streets — and many of them are forced into child prostitution and various underground sex trades. KAI operates two programs in the village of Dobrun, providing a family-style home and a care center program for almost 50 vulnerable children. <br />Cami’s parents and entire family were involved in founding the Children’s Home and the Denisa Care Center, even using their house as a temporary home for babies rescued from government orphanages until the House of Hope Children’s Home was built.",
+        "support":"",
+        "img":"https://secure.kidsalive.org/images/Product/medium/010030.jpg",
+        "vid":"<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://www.youtube.com/embed/iNpWnj2NSFM?modestbranding=1&autoplay=1&showinfo=0&controls=0&enablejsapi=1&rel=0' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
         }
       },
       {"id":"miss7",
         "content": {
-          "name": "StudioTEN Ministries",
-          "desc": "Working to bring the testimony of Jesus to every nation.",
-          "longDesc": "need update",
-          "img": "",
-          "vid":""
-        }
-      },
-      {"id":"miss8",
-        "content": {
           "name":"Deep Well Ministries",
           "desc":"Using basic development as as bridge ministry to rural Sierra Leone communities.",
           "longDesc":"",
-          "img":"",
-          "vid":""
+          "support":"",
+          "img":"https://cinamiblog.files.wordpress.com/2016/05/reifels.jpg?w=160&h=129",
+          "vid":"<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://www.youtube.com/embed/8jdk68a3q3Y?modestbranding=1&autoplay=1&showinfo=0&controls=0&enablejsapi=1&rel=0' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
         }
       }
   ]
