@@ -4,7 +4,7 @@
       "content": {
         "name": "Camp Ray Bird",
         "desc": "Christian summer camp experiences for low-income students in the Michiana area",
-        "longDesc": "The mission of Ray Bird Ministries is to share the gospel of Jesus Christ with Michiana children and teens, nurture those believers, and prepare them for participation in local churches. Ray Bird Ministries specializes in serving families who could not otherwise afford meaningful camping experiences. Ray Bird Ministries is a 501(c)(3) nonprofit organization governed by a board of directors including: Linda Burrell, Phyllis Hueni, Randy Meert, John Rader, Tom Thompson, Don Wierenga, David Mui, Keith Walatka, Kristen Haubold, and Shawn Titus.",
+        "longDesc": "The mission of Ray Bird Ministries is to share the gospel of Jesus Christ with Michiana children and teens, nurture those believers, and prepare them for participation in local churches. Ray Bird Ministries specializes in serving families who could not otherwise afford meaningful camping experiences.",
         "support": "Prayer for camp counselors, our campers would find churches to continue to grow in their relationship with Jesus.",
         "img": "http://www.raybird.org/images/photos/Mui.jpg",
         "vid": "<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://www.youtube.com/embed/-HtIvuEg8ZU?ecver=2&modestbranding=1&autoplay=1&showinfo=0&controls=0&enablejsapi=1&rel=0' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
@@ -54,8 +54,8 @@
         "content": {
           "name":"Deep Well Ministries",
           "desc":"Using basic development as as bridge ministry to rural Sierra Leone communities.",
-          "longDesc":"",
-          "support":"",
+          "longDesc": "Joann and Elmer Reifel bring community development and transformation ministry to villages in Sierra Leon. They are building relationships that lead to discipleship by helping locals drill new wells for clean water",
+          "support":"Prayer needs and donations can be found on the Christians In Action home page.",
           "img":"https://cinamiblog.files.wordpress.com/2016/05/reifels.jpg?w=160&h=129",
           "vid":"<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://www.youtube.com/embed/8jdk68a3q3Y?modestbranding=1&autoplay=1&showinfo=0&controls=0&enablejsapi=1&rel=0' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
         }
