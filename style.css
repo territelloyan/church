@@ -13,6 +13,7 @@ html, body {
 p {
   margin: 10px;
   font-size: 18px;
+  line-height: 1.4;
   word-wrap: break-word;
 }
 
@@ -32,10 +33,9 @@ h1, h2 { margin-left:10px; }
   background-size:cover;
   background-repeat: no-repeat;
   filter:blur(10px);
-  z-index:-10;
 }
 
-.main:before {
+/* .main:before {
   content: '';
   position:absolute;
   top: 0;
@@ -45,7 +45,7 @@ h1, h2 { margin-left:10px; }
   background-image: linear-gradient(to bottom left, rgba(0,0,0,1.0), rgba(0,0,0,0.0));
   opacity: 1;
   z-index:-9;
-}
+} */
 
 .main > div {
   padding:15px 0 0 0;
