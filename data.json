@@ -3,15 +3,23 @@
     { "id":"miss1",
       "content": {
         "name": "Camp Ray Bird",
+<<<<<<< HEAD
         "desc": "Christian summer camp experiences for low-income students in the Michiana area",
         "longDesc": "The mission of Ray Bird Ministries is to share the gospel of Jesus Christ with Michiana children and teens, nurture those believers, and prepare them for participation in local churches. Ray Bird Ministries specializes in serving families who could not otherwise afford meaningful camping experiences.",
         "support": "Prayer for camp counselors, our campers would find churches to continue to grow in their relationship with Jesus.",
         "img": "https://static1.squarespace.com/static/5a2aa1e8cd39c3b1cd290f3d/t/5a2ab713c83025dae18b8393/1512748832343/david+profile.jpg",
         "vid": "-HtIvuEg8ZU"
+=======
+        "desc": "This is a string description for a mission",
+        "longDesc": "This is the mission's lond description in case a short one is used someplace else.",
+        "img": "https://c1.staticflickr.com/5/4414/36198424463_42777eb515_b.jpg",
+        "vid": "<div id='card__vid' style='position:relative;height:0;padding-bottom:56.25%'><iframe src='https://www.youtube.com/embed/-HtIvuEg8ZU?ecver=2&autoplay=0&controls=0&showinfo=0&rel=0&enablejsapi=1' width='640' height='360' frameborder='0' style='position:absolute;width:100%;height:100%;left:0' allowfullscreen></iframe></div>"
+>>>>>>> 9b0be8788d5c3dee0c1c477a090c1e0863661417
         }
       },
       { "id":"miss2",
         "content": {
+<<<<<<< HEAD
           "name": "EFCA: Global Fingerprints",
           "desc": "School for children affected by the ebola epidemic",
           "longDesc": "GlobalFingerprints is the child sponsorship ministry of ReachGlobal. We partner with national churches around the world to send children to school and help care for their physical, spiritual and emotional needs.",
@@ -48,6 +56,14 @@
           "support":"Prayer needs and donations can be found on the Christians In Action home page.",
           "img":"https://cinamiblog.files.wordpress.com/2016/05/reifels.jpg?w=160&h=129",
           "vid":"8jdk68a3q3Y"
+=======
+          "id": "miss2",
+          "name": "Mission 2",
+          "desc": "This is a string description for a second mission",
+          "longDesc": "This is the mission's lond description in case a short one is used someplace else.",
+          "img": "",
+          "vid": "<iframe width='560' height='315' src='https://www.youtube.com/embed/GsWphB9dLkQ?rel=0&amp;controls=0&amp;showinfo=0&enablejsapi=1' frameborder='0' allowfullscreen></iframe>"
+>>>>>>> 9b0be8788d5c3dee0c1c477a090c1e0863661417
         }
       }
   ]
