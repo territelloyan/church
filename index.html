@@ -1,199 +1,215 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Trinity Mission Wall</title>
-  <script src="https://www.youtube.com/iframe_api"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-  <link rel="stylesheet" href="style.css">
+	<meta charset="utf-8">
+	<title>Trinity Mission Wall</title>
+	<script src="https://www.youtube.com/iframe_api"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="main" id="main"></div>
-  <div class="menu">
-    <div class="scroll">
-      <div class="nav">
-        <img class="nav--up" id="nav--up" src="up.png" />
-        <img class="nav--down" id="nav--down" src="down.png" />
-      </div>
-    </div>
-    <div id="tip">Use the trackpad below to navigate</div>
-  </div>
-  <script>
-  function Card(name, longDesc, img, support) {
-    this.name = name;
-    this.desc = longDesc;
-    this.img = img;
-    this.support = support;
+	<div class="main" id="main"></div>
+	<div class="menu">
+		<div class="scroll">
+			<div class="nav">
+				<img class="nav--up" id="nav--up" src="up.png" />
+				<img class="nav--down" id="nav--down" src="down.png" />
+			</div>
+		</div>
+		<div id="tip">Use the trackpad below to navigate</div>
+	</div>
+	<script>
+		function Card(name, longDesc, img, support) {
+			this.name = name;
+			this.desc = longDesc;
+			this.img = img;
+			this.support = support;
+			
+			const main = document.querySelector(`#main`);
+			
+			const left = document.createElement(`div`);
+			left.className = `left`;
+			
+			const right = document.createElement(`div`);
+			right.className = `right`;
+			
+			
+			var img = document.createElement(`div`);
+			img.className = `img`;
+			img.style.backgroundImage = `url("${this.img}")`;
+			left.appendChild(img);
+			
+			var bio = document.createElement(`div`);
+			bio.className = `info`;
+			bio.innerHTML = `
+			<h1>${this.name}</h2>
+				<p>${this.desc}</p>
+				`;
+				
+				left.appendChild(bio);
+				
+				var vid = document.createElement(`div`);
+				var player = document.createElement(`div`);
+				vid.className = `video`;
+				right.appendChild(vid);
+				
+				player.id = `player`;
+				vid.appendChild(player);
+				
+				var support = document.createElement(`div`);
+				support.innerHTML = `
+				<h2>Support this mission</h2>
+				<p>${this.support}</p>
+				`
+				support.className = `support`;
+				right.appendChild(support);
+				
+				var close = document.createElement(`div`);
+				close.className = `close`;
+				close.id = `close`;
+				close.innerHTML = `close`;
+				
+				// Append the close action to the main container.
+				main.appendChild(close);
+				
+				// Add constructed HTML to the main container
+				this.create = function() {
+					main.appendChild(left);
+					main.appendChild(right);
+				}
+			}
+			
+			// Create a div to hold the video, return a promise
+			function addPlayer() {
+				const main = document.querySelector(`#main`)
+				const div = document.createElement(`div`);
+				div.id = `player`;
+				div.class = `video`;
+				main.appendChild(div);
+				
+				return new Promise(function(resolve, reject) {
+					resolve(function() {
+						console.log('setting up the player')
+					})
+				})
+			}
+			
+			// Load the player after the video div loads
+			var player;
+			function onYouTubeIframeAPIReady(id) {
+				player = new YT.Player('player', {
+					height: '464',
+					width: '814',
+					videoId: id,
+					playerVars: {
+						modestbranding: 1,
+						rel: 0,
+						controls: 0
+					},
+					events: {
+						'onReady': onPlayerReady,
+						'onStateChange': onPlayerStateChange
+					}
+				});
+			}
+			
+			function onPlayerReady(event) {
+				event.target.playVideo();
+			}
+			
+			var done = false;
+			function onPlayerStateChange(event) {
+				if (event.data == YT.PlayerState.PLAYING && !done) {
+					// setTimeout(stopVideo, 6000);
+					done = true;
+				} else if(event.data == YT.PlayerState.ENDED) {
+					close();
+				}
+			}
+			
+			function stopVideo() {
+				player.stopVideo();
+			}
+			
+			$(document).ready(function() {
+				$(".left, .right").hide();
+				$.getJSON("data.json", function(data) {
+					for(var i=0; i<data.missions.length; i++) {
+						$(".scroll").append(
+						"<div class='card--small' id='" + data.missions[i].id +"'><h2>" + data.missions[i].content.name + "</h2></div>"
+						);
+					}
+				})
+			})
+			
+			$(".scroll").on("click", ".card--small", function() {
+				$(".menu").hide();
+				$(".main").css("filter", "blur(0)");
+				var id = $(this).attr('id');
+				$("#right").empty();
+				
+				$.getJSON("data.json").done(function(data) {
+					for(var j=0; j<data.missions.length; j++) {
+						if(id == data.missions[j].id) {
+							var card = new Card(data.missions[j].content.name, data.missions[j].content.longDesc, data.missions[j].content.img, data.missions[j].content.support);
+							card.create();
+							
+							return new Promise(function(resolve, reject) {
+								console.log('Window loaded, resolving')
+								onYouTubeIframeAPIReady(data.missions[j].content.vid)
+								$("#close").on('click', close);
+							})
+						}
+					}
+				});
+			})
+			
+			$("#close").click(function() {
+				console.log("clicked")
+			});
+			
+			function close() {
+				$(".main").empty().css("filter", "blur(10px)");
+				$(".menu").fadeIn(500);
+			}
+			
+			function scroll() {
+				$(".scroll").animate({
+					scrollTop: amount
+				}, 100, 'linear', function() {
+					if (amount != '') {
+						scroll();
+					}
+				})
+			}
 
-    var main = document.getElementById("main");
+			// animations use the jQuery UI library
+			setInterval(function() {
+				$("#nav--down").effect("bounce", { distance: -15, times: 3 }, 1000 );
+				$("#nav--up").effect("bounce", {distance: 15, times: 3 }, 1000 );
+			}, 5000);
+			
+			$("#nav--up").hover(function() {
+				amount = '-=30';
+				scroll();
+			}, function() {
+				amount = '';
+			});
 
-    var left = document.createElement("div");
-    left.className = "left";
+			$("#nav--down").hover(function() {
+				amount = '+=30';
+				scroll();
+			}, function() {
+				amount = '';
+			})
+			
+			// don't navigate the page, load the div instead.
+			$(".right").find("a").click(function() {
+				return false
+			})
 
-    var right = document.createElement("div");
-    right.className = "right";
-
-
-    var img = document.createElement('div');
-    img.className = "img";
-    img.style.backgroundImage = "url(" + this.img + ")";
-    left.appendChild(img);
-
-    var bio = document.createElement('div');
-    bio.className = "info";
-    bio.innerHTML = "<h1>" + this.name + "</h2><p>" + this.desc + "</p>";
-    left.appendChild(bio);
-
-    var vid = document.createElement('div');
-    var player = document.createElement('div');
-    vid.className = "video"
-    right.appendChild(vid);
-    player.id = "player";
-    vid.appendChild(player);
-
-    var support = document.createElement("div");
-    support.innerHTML = "<h2>Support this mission</h2>"
-    support.innerHTML += "<p>" + this.support + "</p>";
-    support.className = "support";
-    right.appendChild(support);
-
-    var close = document.createElement("div");
-    close.className = "close";
-    close.id = "close";
-    close.innerHTML = "Close";
-    main.appendChild(close);
-
-    this.create = function() {
-      main.appendChild(left);
-      main.appendChild(right);
-    }
-  }
-
-  // Create a div to hold the video, return a promise
-  function addPlayer() {
-    var main = document.getElementById('main')
-    var div = document.createElement('div');
-    div.id = "player";
-    div.class = "video"
-    main.appendChild(div);
-
-    return new Promise(function(resolve, reject) {
-      resolve(function() {
-        console.log('setting up the player')
-      })
-    })
-  }
-
-  // Load the player after the video div loads
-    var player;
-      function onYouTubeIframeAPIReady(id) {
-        player = new YT.Player('player', {
-          height: '464',
-          width: '814',
-          videoId: id,
-          playerVars: {
-            modestbranding: 1,
-            rel: 0,
-            controls: 0
-          },
-          events: {
-            'onReady': onPlayerReady,
-            'onStateChange': onPlayerStateChange
-          }
-        });
-      }
-
-      function onPlayerReady(event) {
-        event.target.playVideo();
-      }
-
-      var done = false;
-      function onPlayerStateChange(event) {
-        if (event.data == YT.PlayerState.PLAYING && !done) {
-          // setTimeout(stopVideo, 6000);
-          done = true;
-        } else if(event.data == YT.PlayerState.ENDED) {
-          close();
-        }
-      }
-      function stopVideo() {
-        player.stopVideo();
-      }
-
-    $(document).ready(function() {
-      $(".left, .right").hide();
-      $.getJSON("data.json", function(data) {
-        for(var i=0; i<data.missions.length; i++) {
-          $(".scroll").append(
-            "<div class='card--small' id='" + data.missions[i].id +"'><h2>" + data.missions[i].content.name + "</h2></div>"
-          );
-        }
-      })
-    })
-
-    $(".scroll").on("click", ".card--small", function() {
-      $(".menu").hide();
-      $(".main").css("filter", "blur(0)");
-      var id = $(this).attr('id');
-      $("#right").empty();
-
-      $.getJSON("data.json").done(function(data) {
-        for(var j=0; j<data.missions.length; j++) {
-          if(id == data.missions[j].id) {
-            var card = new Card(data.missions[j].content.name, data.missions[j].content.longDesc, data.missions[j].content.img, data.missions[j].content.support);
-            card.create();
-
-            return new Promise(function(resolve, reject) {
-              console.log('Window loaded, resolving')
-              onYouTubeIframeAPIReady(data.missions[j].content.vid)
-              $("#close").on('click', close);
-            })
-          }
-        }
-      });
-    })
-
-    $("#close").click(function() {
-      console.log("clicked")
-    });
-
-    function close() {
-      $(".main").empty().css("filter", "blur(10px)");
-      $(".menu").fadeIn(500);
-    }
-
-    function scroll() {
-      $(".scroll").animate({
-        scrollTop: amount
-      }, 100, 'linear', function() {
-        if (amount != '') {
-          scroll();
-        }
-      })
-    }
-    setInterval(function() {
-      $("#nav--down").effect("bounce", { distance: -15, times: 3 }, 1000 );
-      $("#nav--up").effect("bounce", {distance: 15, times: 3 }, 1000 );
-    }, 5000);
-
-    $("#nav--up").hover(function() {
-      amount = '-=30';
-      scroll();
-    }, function() {
-      amount = '';
-    });
-    $("#nav--down").hover(function() {
-      amount = '+=30';
-      scroll();
-    }, function() {
-      amount = '';
-    })
-
-    $(".right").find("a").click(function() {
-      console.log("Clicked an anchor!")
-      return false
-    })
-    </script>
-  </body>
-  </html>
+		</script>
+	</body>
+</html>
+	
